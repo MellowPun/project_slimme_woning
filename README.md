@@ -1,1 +1,1 @@
-# Python projecet slimme woning
+# Python project slimme woning
