@@ -2,14 +2,8 @@ from kamer import Kamers
 from apparaat import Apparaten
 from bewoner import Bewoners
 
-class Singleton(object):
-    _instance = None
-    def __new__(class_, *args, **kwargs):
-        if not isinstance(class_._instance, class_):
-            class_._instance = object.__new__(class_, *args, **kwargs)
-        return class_._instance
 
-class Woning(Singleton): 
+class Woning():
     def __init__(self):
         self.kamers = Kamers()
         self.apparaten = Apparaten()
@@ -19,15 +13,15 @@ class Woning(Singleton):
         self.initialiseer_bewoners()
 
     def initialiseer_kamers(self):
-        for kamer in [
+       for kamer in [
             "woonkamer",
             "keuken",
             "slaapkamer_1",
             "slaapkamer_2",
             "badkamer",
             "gang"
-        ]:
-            self.kamers.toevoegen(kamer)
+       ]:
+           self.kamers.toevoegen(kamer)
 
     def initialiseer_apparaten(self):
         for apparaat in [
@@ -59,7 +53,10 @@ class Woning(Singleton):
             ["Gordijn", "slaapkamer_2"],
         ]:
             self.apparaten.toevoegen(apparaat[0],apparaat[1])
-    
+            
+
+        
+
     def initialiseer_bewoners(self):
         for bewoner in [
             "Axel",

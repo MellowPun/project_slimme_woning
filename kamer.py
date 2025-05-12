@@ -1,23 +1,33 @@
 class Kamer():
-    """Klasse kamer: bestaat uit een id en kamernaam"""
-    def __init__(self,id, kamer):
+    """Kamer parameters"""
+    def __init__(self, id, kamernaam):
         self.id = id
-        self.kamer = kamer
-        
+        self.kamernaam = kamernaam
+        self.apparaten = []
+    def __str__(self):
+        rs = f"{self.id}: {self.kamernaam}\n"
+        for apparaat in self.apparaten:
+            rs += f"\t{apparaat}\n"
+        return  rs
+
 class Kamers():
-    """Klasse kamers: bevat kamers-objecten en verwante bewerkingsmethodes"""
+    """Overzicht van alle kamers"""
     def __init__(self):
         self.lijst = []
-        self.index = 1
+        self.index =1 
 
-    def toevoegen(self,kamer):
-        nieuwe_kamer = Kamer(self.index, kamer)
+    def toevoegen(self,kamernaam):
+        """Tovoegen van kamer in kamerlijst"""
+        nieuwe_kamer = Kamer(self.index, kamernaam)
         self.lijst.append(nieuwe_kamer)
-        self.index +=1
-    
-    def __str__(self):
-        rs = "\n We hebben enkele kamers:\n"
-        for kamer in self.lijst:
-            rs+= f"\t{str(kamer.id)}: {kamer.naam}\n"
+        self.index += 1 
 
+    #def apparaat_toevoegen(self,kamer, apparaat):
+
+
+
+    def __str__(self):
+        rs = "\nWe hebben enkele kamers:\n"
+        for kamer in self.lijst:
+            rs+= f"\t{kamer}\n"
         return rs

@@ -1,10 +1,15 @@
 class Bewoner():
-    """Klasse bewonner: bestaat uit een id en naam"""
+    """bewonner parameters"""
     def __init__(self, id, naam):
         self.id = id
         self.naam = naam
+        self.locatie = "gang"
+    def __str__(self):
+        rs = f"{self.id}: {self.naam}\n"
+        rs += f"\tLocated: {self.locatie}\n"
+        return rs
 class Bewoners():
-    """Klasse bewonners: bevat bewoner-objecten en verwante bewerkingsmethodes"""
+    """Bewoners lijst"""
 
     def __init__(self):
         self.lijst = []
@@ -16,9 +21,7 @@ class Bewoners():
         self.index +=1
 
     def __str__(self):
-        rs = "\n Je vroeg een lijst van bewoners: \n"
+        rs = "\nLijst van bewoners: \n"
         for bewoner in self.lijst:
-            rs+= f"\t{str(bewoner.id)}: {bewoner.naam}\n"
-
+            rs += f"\t{bewoner}\n"
         return rs
-    
