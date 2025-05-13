@@ -2,6 +2,8 @@ class Smarthub():
     def __init__(self,woning, logger):
         self.woning = woning
         self.logger = logger
+        self.vorige_kamer = None
+        self.vorige_apparaten = None
     
     def finding_devices(self, kamer_movement):
         """Finding the right devices for the right room"""
@@ -24,19 +26,24 @@ class Smarthub():
 
         if "Deurslot" == self.looping_through_devices(apparaten, "Deurslot").__class__.__name__:
             apparaat = self.looping_through_devices(apparaten, "Deurslot")   
-            if apparaat.status == False:
+            if not apparaat.status:
                 if self.door_code(apparaat):
                     apparaat.statusOn()
                     self.logger.log(f"DEURSLOT IS {"OPEN" if apparaat.status else "CLOSED"} IN {apparaat.kamer}")
-                    bew_apparaat = self.looping_through_devices(apparaten, "Bewegingssensor")
-                    bew_apparaat.statusOn()
-                    self.logger.log(f"BEWEGINGSSENSOR IS {bew_apparaat.status} IN {apparaat.kamer}")
-                    lamp_apparaat = self.looping_through_devices(apparaten, "Lamp")   
-                    lamp_apparaat.statusOn()
-                    self.logger.log(f"LAMP IS {"ON" if lamp_apparaat.status else "OFF"} IN {apparaat.kamer}")
                     
+        if "Bewegingssensor" == self.looping_through_devices(apparaten, "Bewegingssensor").__class__.__name__:
+            apparaat = self.looping_through_devices(apparaten, "Bewegingssensor")   
+            if not apparaat.status:
+                    apparaat.statusOn()
+                    self.logger.log(f"BEWEGINGSSENSOR IS {apparaat.status} IN {apparaat.kamer}")
+
         if "Lamp" == self.looping_through_devices(apparaten, "Lamp").__class__.__name__:
             apparaat = self.looping_through_devices(apparaten, "Lamp")   
+            bew_apparaat = self.looping_through_devices(apparaten, "Bewegingssensor")   
+            if bew_apparaat:
+                apparaat.statusOn()
+                self.logger.log(f"LAMP IS {"ON" if apparaat.status else "OFF"} IN {apparaat.kamer}")
+
             antwoord = input("Wil je de helderheid aanpassen [Y/N]: ")
             if antwoord == "Y":
                 apparaat.helderheid_instellen()
@@ -79,5 +86,49 @@ class Smarthub():
                 input_password = int(input("PASSWWORD PLEASE: "))
 
 
+    def simulatie(self, apparaten):
+        """Simulatie opstarten"""
+        if self.vorige_kamer == apparaten[0].kamer or self.vorige_kamer == None:
+            pass
+        else:
+            Bapp = self.looping_through_devices(self.vorige_apparaten,"Bewegingssensor")
+            Lapp = self.looping_through_devices(self.vorige_apparaten,"Lamp")
+            Dapp = self.looping_through_devices(self.vorige_apparaten,"Deurslot")
+            Bapp.statusOff()
+            Lapp.statusOff()
+            Dapp.statusOff()
+            self.logger.log(f"BEWEGINGSSENSOR IS {Bapp.status} IN {Bapp.kamer}")
+            self.logger.log(f"LAMP IS {"ON" if Lapp.status else "OFF"} IN {Lapp.kamer}")
+            self.logger.log(f"DEURSLOT IS {"OPEN" if Dapp.status else "CLOSED"} IN {Dapp.kamer}")
 
-                
+        if "Rookmelder" == self.looping_through_devices(apparaten, "Rookmelder").__class__.__name__:
+            apparaat = self.looping_through_devices(apparaten, "Rookmelder")   
+            # HIER MOET NOG ALARMSYSTEEM INGESTELD WORDEN
+
+        if "Deurslot" == self.looping_through_devices(apparaten, "Deurslot").__class__.__name__:
+            apparaat = self.looping_through_devices(apparaten, "Deurslot")   
+            if not apparaat.status:
+                apparaat.statusOn()  
+                self.logger.log(f"DEURSLOT IS {"OPEN" if apparaat.status else "CLOSED"} IN {apparaat.kamer}")
+
+        if "Bewegingssensor" == self.looping_through_devices(apparaten, "Bewegingssensor").__class__.__name__:
+            apparaat = self.looping_through_devices(apparaten, "Bewegingssensor")   
+            if not apparaat.status:
+                apparaat.statusOn()
+
+            self.logger.log(f"BEWEGINGSSENSOR IS {apparaat.status} IN {apparaat.kamer}")
+        if "Lamp" == self.looping_through_devices(apparaten, "Lamp").__class__.__name__:
+            apparaat = self.looping_through_devices(apparaten, "Lamp")   
+            bew_apparaat = self.looping_through_devices(apparaten, "Bewegingssensor")   
+            if bew_apparaat:
+                apparaat.statusOn()
+            else: 
+                apparaat.statusOff()
+            self.logger.log(f"LAMP IS {"ON" if apparaat.status else "OFF"} IN {apparaat.kamer}")
+
+        if "Gordijn" == self.looping_through_devices(apparaten, "Gordijn").__class__.__name__:
+            apparaat = self.looping_through_devices(apparaten, "Gordijn")   
+            self.logger.log(f"GORDIJN IS {apparaat.status} IN {apparaat.kamer}")
+        self.vorige_kamer = apparaten[0].kamer
+        self.vorige_apparaten = apparaten
+        
