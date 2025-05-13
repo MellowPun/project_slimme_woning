@@ -14,6 +14,7 @@ class Smarthub():
 
     def manual_check_up(self,apparaten):
         """Checking devices and interacting with them"""
+
         if "Thermostaat" == self.looping_through_devices(apparaten, "Thermostaat").__class__.__name__:
             apparaat = self.looping_through_devices(apparaten, "Thermostaat")
             antwoord = input("Wil je het temperatuur veranderen [Y/N]: ")
@@ -102,7 +103,9 @@ class Smarthub():
             self.logger.log(f"DEURSLOT IS {"OPEN" if Dapp.status else "CLOSED"} IN {Dapp.kamer}")
 
         if "Rookmelder" == self.looping_through_devices(apparaten, "Rookmelder").__class__.__name__:
-            apparaat = self.looping_through_devices(apparaten, "Rookmelder")   
+            apparaat = self.looping_through_devices(apparaten, "Rookmelder") 
+            if("Rook"):
+                apparaat.statusOn()
             # HIER MOET NOG ALARMSYSTEEM INGESTELD WORDEN
 
         if "Deurslot" == self.looping_through_devices(apparaten, "Deurslot").__class__.__name__:

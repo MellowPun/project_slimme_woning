@@ -15,3 +15,9 @@ Ik heb een lijst van bewoners kunnen opstellen en afprinten.
 Ik hebe een methode gemaakt waarbij de bewoners van locatie veranderen.
 Ik wil nu de kamers en apparaten linken met elkaar en heb dit gedaan met een methode.
 
+## 13/05
+Ik heb de smarthub opgesteld. Dit is het middelpunt van alles. Hieruit kan je alle apparaten aanpassen. Door te werken aan de smarthub had ik door dat apparaten beter hier werden gelinkt ipv via de kamers.
+Ik heb de manuele beslissingen kunnen maken, hierdoor kan je de helderheid, temperatuur, gordijnen besturen. Daarnaast heb ik de extra challenge van mijn trajec, cyber security, toegepast. Je moet je authenticeren bij elke deur als deze gesloten is. Ik heb de hackingpoging nog niet toegepast maak ik denk niet dat niet al te moeilijk kan zijn. Ik heb de basis al. 
+Ik vond het zeer moeilijk om de juiste apparaten aan te spreken en zo manuneel aan te passen. Maar ik heb het opgelost met een heleboel if statements.
+Mijn bewoners gaan ook telkens naar een willekeurige locatie. 
+Ik heb vervolgens de simulatie gemaakt. Ik had het probleem dat de bewegingssensor, lamp en deurslot niet terug sloten of uitgingen wanneer de bewoner buiten wandelde. Mijn code was een grote soep van lijntjes waardoor het niet makkelijk wat om dit op te lossen. Ik had ook meermaals dubbele code dat ik zoveel mogelijk probeerde op te lossen.
