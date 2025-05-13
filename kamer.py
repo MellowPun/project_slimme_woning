@@ -4,10 +4,11 @@ class Kamer():
         self.id = id
         self.kamernaam = kamernaam
         self.apparaten = []
+
     def __str__(self):
         rs = f"{self.id}: {self.kamernaam}\n"
         for apparaat in self.apparaten:
-            rs += f"\t{apparaat}\n"
+            rs += f"\t\t{apparaat}\n "
         return  rs
 
 class Kamers():
@@ -21,10 +22,6 @@ class Kamers():
         nieuwe_kamer = Kamer(self.index, kamernaam)
         self.lijst.append(nieuwe_kamer)
         self.index += 1 
-
-    #def apparaat_toevoegen(self,kamer, apparaat):
-
-
 
     def __str__(self):
         rs = "\nWe hebben enkele kamers:\n"

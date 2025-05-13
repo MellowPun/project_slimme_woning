@@ -12,4 +12,6 @@ Ik heb de beslissing gemaakt om terug van 0 te beginnen en het principe "Test ea
 Ik heb een lijst van kamers kunnen opstellen en kunnen afprinten waardoor ik een duidelijk beeld heb wat mijn kamers zijn.
 Ik heb een lijst van apparaten kunnen opstellen en afprinten.
 Ik heb een lijst van bewoners kunnen opstellen en afprinten.
-Ik wil nu de kamers en apparaten linken met elkaar.
+Ik hebe een methode gemaakt waarbij de bewoners van locatie veranderen.
+Ik wil nu de kamers en apparaten linken met elkaar en heb dit gedaan met een methode.
+

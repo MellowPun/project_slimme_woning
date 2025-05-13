@@ -11,6 +11,8 @@ class Woning():
         self.initialiseer_kamers()
         self.initialiseer_apparaten()
         self.initialiseer_bewoners()
+        self.apparaat_kamers_link()
+        
 
     def initialiseer_kamers(self):
        for kamer in [
@@ -54,9 +56,6 @@ class Woning():
         ]:
             self.apparaten.toevoegen(apparaat[0],apparaat[1])
             
-
-        
-
     def initialiseer_bewoners(self):
         for bewoner in [
             "Axel",
@@ -65,3 +64,13 @@ class Woning():
             "Beatrix"
         ]:
             self.bewoners.toevoegen(bewoner)
+    
+    def apparaat_kamers_link(self):
+        """Loopen door kamerlijst en apparatenlijst. 
+        Bekijken welke apparaten in een bepaalde kamer zit 
+        en deze toeveogen aan de lijst van kamers."""
+        for kamer in self.kamers.lijst:
+            for apparaat in self.apparaten.lijst:
+                if kamer.kamernaam == apparaat.kamer:
+                    kamer.apparaten.append(apparaat)
+                    

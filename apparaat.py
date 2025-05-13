@@ -7,6 +7,9 @@ class Apparaat(ABC):
         self.id = id
         self.kamer = kamer
 
+    def update(self):
+        return f"{self.__class__.__name__} in {self.kamer} is aangepast: {self.status}"
+
     @abstractmethod
     def statusOn(self):
         pass
@@ -16,15 +19,18 @@ class Apparaat(ABC):
     
     def __str__(self):
         str_status = "On" if self.status else "Off"
-        return f"\n{self.id}: {self.__class__.__name__} {str_status}\n"
+        return f"{self.id}: {self.__class__.__name__} {str_status}\n"
     
 class Lamp(Apparaat):
     def __init__(self, id, kamer):
         super().__init__(id, kamer)
         self.helderheid = 5
+    def update(self):
+        return f"{self.__class__.__name__} in {self.kamer} is aangepast: {self.status} {self.helderheid}"
 
     def statusOn(self):
         self.status = True
+
     def statusOff(self):
         self.status = False
     
@@ -38,14 +44,18 @@ class Lamp(Apparaat):
 
     def __str__(self):
         str_status = "On" if self.status else "Off"
-        rs = f"{self.id}: {self.__class__.__name__} {str_status}"
-        rs += f"\n\thelderheid: {self.helderheid}\n"
+        rs = f"{self.id}: {self.__class__.__name__} {str_status}\n"
+        rs += f"\t\thelderheid: {self.helderheid}\n"
         return rs
     
 class Thermostaat(Apparaat):
     def __init__(self, id, kamer):
         super().__init__(id, kamer)
+        self.statusOn()
         self.temp = 20
+
+    def update(self):
+        return f"{self.__class__.__name__} in {self.kamer} is aangepast: {self.status} {self.temp}°C"
 
     def verander_temp(self):
         """Temperatuur instellen"""
@@ -63,8 +73,8 @@ class Thermostaat(Apparaat):
 
     def __str__(self):
         str_status = "On" if self.status else "Off"
-        rs = f"{self.id}: {self.__class__.__name__} {str_status}"
-        rs += f"\n\Themperature: {self.temp}\n"
+        rs = f"{self.id}: {self.__class__.__name__} {str_status}\n"
+        rs += f"\t\tThemperature: {self.temp}\n"
         return rs
 
 class Deurslot(Apparaat):
@@ -79,7 +89,7 @@ class Deurslot(Apparaat):
 
     def __str__(self):
         status = "Open" if self.status else "Closed"
-        rs = f"{self.id}: {self.__class__.__name__} {status}"
+        rs = f"{self.id}: {self.__class__.__name__} {status}\n"
         return rs
 
 class Bewegingssensor(Apparaat):
@@ -112,6 +122,11 @@ class Gordijn(Apparaat):
     def statusOn(self):
         self.status = True
 
+    def __str__(self):
+        status = "Open" if self.status else "Closed"
+        rs = f"{self.id}: {self.__class__.__name__} {status}\n"
+        return rs
+
 class Apparaten():
     """Lijst van apparaten"""
     def __init__(self):
@@ -123,23 +138,22 @@ class Apparaten():
         match apparaat:
             case "Lamp":
                 nieuw_apparaat = Lamp(self.index,kamer)
-            #case "Thermostaat":
-                #nieuw_apparaat = Thermostaat( kamer)
-            #case "Deurslot":
-                #nieuw_apparaat = Deurslot(kamer)
-            #case "Bewegingssensor":
-                #nieuw_apparaat = Bewegingssensor(kamer)
-            #case "Rookmelder":
-                #nieuw_apparaat = Rookmelder(kamer)
-            #case "Gordijn":
-                #nieuw_apparaat = Gordijn(kamer)
-            case _:
-                nieuw_apparaat = Andere(self.index, kamer)
+            case "Thermostaat":
+                nieuw_apparaat = Thermostaat(self.index, kamer)
+            case "Deurslot":
+                nieuw_apparaat = Deurslot(self.index, kamer)
+            case "Bewegingssensor":
+                nieuw_apparaat = Bewegingssensor(self.index,kamer)
+            case "Rookmelder":
+                nieuw_apparaat = Rookmelder(self.index,kamer)
+            case "Gordijn":
+                nieuw_apparaat = Gordijn(self.index, kamer)
         
         self.lijst.append(nieuw_apparaat)
         self.index += 1
+
     def __str__(self):
         rs = "\nLijst van apparaten:\n"
         for apparaat in self.lijst:
-            rs += f"\t{apparaat}"
+            rs += f"\t{apparaat}\n"
         return rs
