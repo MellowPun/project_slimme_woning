@@ -21,3 +21,7 @@ Ik heb de manuele beslissingen kunnen maken, hierdoor kan je de helderheid, temp
 Ik vond het zeer moeilijk om de juiste apparaten aan te spreken en zo manuneel aan te passen. Maar ik heb het opgelost met een heleboel if statements.
 Mijn bewoners gaan ook telkens naar een willekeurige locatie. 
 Ik heb vervolgens de simulatie gemaakt. Ik had het probleem dat de bewegingssensor, lamp en deurslot niet terug sloten of uitgingen wanneer de bewoner buiten wandelde. Mijn code was een grote soep van lijntjes waardoor het niet makkelijk wat om dit op te lossen. Ik had ook meermaals dubbele code dat ik zoveel mogelijk probeerde op te lossen.
+Ik heb een optiekeuze gemaakt in de terminal om alles op te stellen. Daarnaast heb ik ook de HTML generator gemaakt. Dit was niet zo moeilijk. Ik heb geen speciale packages gebruikt. Ik heb gewoon basis html gebruikt en toegevoegd. Ik heb ook een logger gemaakt en alles toegevoegd in een JSON.
+
+## 17/05
+Ik heb de bruteforce methode gemaakt. Dit was niet zo moeilijk. Ik heb meerdere for loops gebruikt. Er is wel een mogelijkheid dat het makkelijkers is.

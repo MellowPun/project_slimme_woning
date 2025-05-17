@@ -1,6 +1,6 @@
 from woning import Woning
-from smarthub import Smarthub
 from logger import Logger
+from smarthub import Smarthub
 from random import randint
 from HTMLGen import html
 
@@ -9,7 +9,18 @@ logger = Logger()
 smarthub = Smarthub(woning, logger)
 html_gen = html(woning)
 kamers =  ["woonkamer","keuken","slaapkamer_1","slaapkamer_2","badkamer","gang"]
-
+def bruteforce():
+    wachtwoord = "0000"
+    print("Entering BruteForce")
+    for i in range(10):
+        for j in range(10):
+            for k in range(10):
+                for l in range(10):
+                    bruteforce_wachtwoord = f"{i}{j}{k}{l}"
+                    if bruteforce_wachtwoord == wachtwoord:
+                        return print(f"Unlocked: {bruteforce_wachtwoord}")
+                    
+    return print("BRUTEFORCE FAILED")
 
 
 while True:
@@ -17,9 +28,11 @@ while True:
     print("[1] Start a simulation")
     print("[2] Toon de Logger")
     print("[3] Verander manueel de settings")
-    print("[4] Stop")
-    option = int(input("Welke optie wil je [1-3]:"))
+    print("[4] Bruteforce")
+    print("[5] Stop")
+    option = int(input("Welke optie wil je [1-5]:"))
     match option:
+
         case 1:
             steps = int(input("Hoeveel stappen wil je hebben:"))
             for _ in range(steps):
@@ -33,6 +46,7 @@ while True:
 
         case 2: 
             logger.toon_logger()
+
         case 3:
             steps = int(input("Hoeveel stappen wil je hebben:"))
             for _ in range(steps):
@@ -41,6 +55,10 @@ while True:
                 lijst_apparaten = smarthub.finding_devices(kamers[randnum])
                 smarthub.manual_check_up(lijst_apparaten)
         
-        case _:
+        case 4:
+            bruteforce()
+        case 5:
             print("Goodbye")
             break
+
+

@@ -106,11 +106,16 @@ class Rookmelder(Apparaat):
     def __init__(self, id, kamer):
         super().__init__(id, kamer)
 
+    def alarm(self):
+        return f"ALARM GAAT AF IN {self.kamer}"
+
     def statusOff(self):
         self.status = False
     
     def statusOn(self):
         self.status = True
+        self.alarm()
+    
 
 class Gordijn(Apparaat):
     def __init__(self,id, kamer):

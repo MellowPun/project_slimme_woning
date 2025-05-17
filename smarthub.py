@@ -106,7 +106,7 @@ class Smarthub():
             apparaat = self.looping_through_devices(apparaten, "Rookmelder") 
             if("Rook"):
                 apparaat.statusOn()
-            # HIER MOET NOG ALARMSYSTEEM INGESTELD WORDEN
+                self.logger.log(apparaat.alarm())
 
         if "Deurslot" == self.looping_through_devices(apparaten, "Deurslot").__class__.__name__:
             apparaat = self.looping_through_devices(apparaten, "Deurslot")   
@@ -135,3 +135,5 @@ class Smarthub():
         self.vorige_kamer = apparaten[0].kamer
         self.vorige_apparaten = apparaten
         
+    def bruteforce(self,kamer):
+        pass
