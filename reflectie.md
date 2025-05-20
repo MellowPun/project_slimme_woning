@@ -25,3 +25,12 @@ Ik heb een optiekeuze gemaakt in de terminal om alles op te stellen. Daarnaast h
 
 ## 17/05
 Ik heb de bruteforce methode gemaakt. Dit was niet zo moeilijk. Ik heb meerdere for loops gebruikt. Er is wel een mogelijkheid dat het makkelijkers is.
+
+## Conclusie
+Ik heb een terminal opgesteld met verschillende keuzes: 
+- Het starten van een simulatie. 
+- Tonen van de logger
+- Manueel instellingen veranderen van een kamer
+    - Op deze mannier kan je de temperatuur, helderheid, deurslot code invoeren
+- Bruteforce functie op zichzelf
+

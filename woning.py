@@ -33,6 +33,7 @@ class Woning():
             ["Lamp", "slaapkamer_2"],
             ["Lamp", "badkamer"],
             ["Lamp", "gang"],
+            ["Lamp", "gang"],
             ["Thermostaat", "gang"],
             ["Deurslot", "woonkamer"],
             ["Deurslot", "keuken"],

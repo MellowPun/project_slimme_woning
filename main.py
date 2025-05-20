@@ -9,22 +9,12 @@ logger = Logger()
 smarthub = Smarthub(woning, logger)
 html_gen = html(woning)
 kamers =  ["woonkamer","keuken","slaapkamer_1","slaapkamer_2","badkamer","gang"]
-def bruteforce():
-    wachtwoord = "0000"
-    print("Entering BruteForce")
-    for i in range(10):
-        for j in range(10):
-            for k in range(10):
-                for l in range(10):
-                    bruteforce_wachtwoord = f"{i}{j}{k}{l}"
-                    if bruteforce_wachtwoord == wachtwoord:
-                        return print(f"Unlocked: {bruteforce_wachtwoord}")
-                    
-    return print("BRUTEFORCE FAILED")
+for apparaat in woning.kamers.lijst[5].apparaten:
+    print(apparaat)
 
 
 while True:
-
+    
     print("[1] Start a simulation")
     print("[2] Toon de Logger")
     print("[3] Verander manueel de settings")
@@ -35,12 +25,16 @@ while True:
 
         case 1:
             steps = int(input("Hoeveel stappen wil je hebben:"))
-            for _ in range(steps):
+            for i in range(steps):
+                print()
+                print(f"============================STAP {i+1}============================")
+                print()
                 randnum = randint(0,5)
                 woning.bewoners.locatie_aanpassen(1,kamers[randnum])
                 logger.log(f"{woning.bewoners.lijst[0].naam} MOVES TO {kamers[randnum]}")
                 lijst_apparaten = smarthub.finding_devices(kamers[randnum])
                 smarthub.simulatie(lijst_apparaten)
+                print()
                 logger.write_Json()
             html_gen.genereer_html()    
 
@@ -49,14 +43,18 @@ while True:
 
         case 3:
             steps = int(input("Hoeveel stappen wil je hebben:"))
-            for _ in range(steps):
+            for i in range(steps):
+                print()
+                print(f"============================STAP {i+1}============================")
+                print()
                 randnum = randint(0,5)
                 woning.bewoners.locatie_aanpassen(1,kamers[randnum])
                 lijst_apparaten = smarthub.finding_devices(kamers[randnum])
                 smarthub.manual_check_up(lijst_apparaten)
-        
+                print()
+
         case 4:
-            bruteforce()
+            smarthub.bruteforce("1234")
         case 5:
             print("Goodbye")
             break

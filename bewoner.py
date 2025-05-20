@@ -26,7 +26,6 @@ class Bewoners():
         for bewoner in self.lijst:
             if bewoner.id == id:
                 bewoner.locatie = locatie
-                
                 break
 
     def __str__(self):
