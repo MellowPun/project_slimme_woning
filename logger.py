@@ -11,5 +11,5 @@ class Logger():
             print(log)
     
     def write_Json(self):
-        with open("HTML/logger.json", "w") as f:
+        with open("_site/logger.json", "w") as f:
             json.dump(self.lijst, f)

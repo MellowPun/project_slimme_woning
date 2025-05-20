@@ -34,3 +34,7 @@ Ik heb een terminal opgesteld met verschillende keuzes:
     - Op deze mannier kan je de temperatuur, helderheid, deurslot code invoeren
 - Bruteforce functie op zichzelf
 
+Hoe kun je smart homes beter beschermen?
+- 2 factor authentication
+- Biometrics
+- Alarm dat afgaat wanneer er te veel fouten plaats vinden

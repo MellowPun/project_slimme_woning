@@ -12,6 +12,6 @@ class html():
             html += "\n\t</ul>"
         html += "\n</body></html>"
 
-        with open("HTML/status_overzicht.html", "w") as f:
+        with open("_site/status_overzicht.html", "w") as f:
             f.write(html)
 
